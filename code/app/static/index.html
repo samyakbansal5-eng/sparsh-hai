@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SPARSH · Switchboard setup assistant</title>
+<link rel="stylesheet" href="/static/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%231f2a44%22/%3E%3Ccircle cx=%2232%22 cy=%2232%22 r=%2210%22 fill=%22%23f4b942%22/%3E%3C/svg%3E">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+      <rect x="4" y="4" width="56" height="56" rx="14" fill="#1f2a44"/>
+      <circle cx="20" cy="22" r="5" fill="#f4b942"/>
+      <rect x="32" y="19" width="16" height="6" rx="3" fill="#f4b942"/>
+      <polygon points="20,36 27,48 13,48" fill="#f4b942"/>
+      <circle cx="40" cy="42" r="6" fill="none" stroke="#f4b942" stroke-width="3.5"/>
+    </svg>
+    <div><div class="name">SPARSH <span class="hi">स्पर्श</span></div><div class="tag" data-i18n="tag">Switchboard setup assistant for tactile stickers</div></div>
+  </div>
+  <nav class="steps" aria-label="Progress">
+    <span data-step="1" class="on">1 <b data-i18n="s1">Photo</b></span>
+    <span data-step="2">2 <b data-i18n="s2">Check AI</b></span>
+    <span data-step="3">3 <b data-i18n="s3">Assign &amp; test</b></span>
+    <span data-step="4">4 <b data-i18n="s4">Guide</b></span>
+  </nav>
+  <div class="right">
+    <span id="modeBadge" class="badge"></span>
+    <button class="ghost" id="langBtn" aria-label="Switch language">हिंदी</button>
+  </div>
+</header>
+
+<main>
+  <!-- STEP 0/1: start + photo -->
+  <section id="start" class="panel center">
+    <h1 data-i18n="h_start">Set up a switchboard in four steps</h1>
+    <p class="lead" data-i18n="lead">Take one photo. The AI marks where the switches are. <b>You</b> decide what each switch controls and check it by flipping it. SPARSH then prints which tactile sticker goes on which switch.</p>
+    <div class="photoRow">
+      <label class="bigbtn" for="fileIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="13" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        <span data-i18n="take">Take or upload photo</span>
+      </label>
+      <input id="fileIn" type="file" accept="image/*" capture="environment" hidden>
+    </div>
+    <ul class="tips">
+      <li data-i18n="tip1">Stand straight in front of the board; let it fill most of the photo.</li>
+      <li data-i18n="tip2">Turn the room light on. Avoid flash glare on glossy plates.</li>
+      <li data-i18n="tip3">One board per photo.</li>
+    </ul>
+    <details class="samples"><summary data-i18n="samples">Try a sample board</summary><div id="sampleGrid"></div></details>
+    <details class="research"><summary data-i18n="research">Researcher options (user study)</summary>
+      <div class="grid2">
+        <label>Condition
+          <select id="condSel"><option value="ai">AI + confidence &amp; reasons (Study B treatment)</option><option value="ai_bare">AI, bare suggestions (Study B control)</option><option value="manual">Manual, no AI (fallback / optional baseline)</option></select></label>
+        <label>Participant ID <input id="pidIn" placeholder="e.g. C07" maxlength="8"></label>
+        <label class="chk"><input type="checkbox" id="studyChk"> Log this session (consent recorded on paper)</label>
+        <label class="chk"><input type="checkbox" id="injectChk"> Seeded AI errors: ~25% of AI output wrong (planted + hidden switches; debrief after!)</label>
+      </div>
+    </details>
+  </section>
+
+  <!-- workspace -->
+  <section id="work" class="hidden">
+    <div class="board">
+      <div id="banner" class="banner"></div>
+      <div class="canvasWrap"><canvas id="cv" aria-label="Switchboard photo with numbered boxes" tabindex="0"></canvas>
+        <div id="drawHint" class="drawHint hidden" data-i18n="drawhint">Drag a box around the switch</div></div>
+      <div class="legendBar">
+        <span><i class="k high"></i><span data-i18n="l_high">AI fairly sure</span></span>
+        <span><i class="k check"></i><span data-i18n="l_check">AI unsure – please check</span></span>
+        <span><i class="k low"></i><span data-i18n="l_low">AI guess – likely not a switch</span></span>
+        <span><i class="k human"></i><span data-i18n="l_human">Added by you</span></span>
+      </div>
+      <div class="toolbar">
+        <button id="addBtn" class="ghost">＋ <span data-i18n="add">Add missed switch</span></button>
+        <button id="undoBtn" class="ghost">↶ <span data-i18n="undo">Undo</span></button>
+        <button id="restartBtn" class="ghost" data-i18n="restart">New photo</button>
+      </div>
+    </div>
+
+    <aside class="side">
+      <div id="phaseReview">
+        <h2 data-i18n="h_review">Check what the AI found</h2>
+        <p class="muted" data-i18n="p_review">Tap each box. Keep real switches, remove anything that is not a switch (socket, regulator, blank cover). Add any switch the AI missed.</p>
+        <button id="acceptHighBtn" class="primary wide"></button>
+      </div>
+      <div id="phaseAssign" class="hidden">
+        <h2 data-i18n="h_assign">What does each switch control?</h2>
+        <p class="muted" data-i18n="p_assign">The camera cannot see wiring. Flip each switch, see what turns on, then choose it here and tick “I checked”.</p>
+      </div>
+
+      <div id="card" class="card hidden"></div>
+      <ol id="list" class="list"></ol>
+      <div id="issues" class="issues"></div>
+      <div class="navBtns">
+        <button id="toAssignBtn" class="primary wide" data-i18n="next_assign">Next: assign functions →</button>
+        <button id="backReviewBtn" class="ghost wide hidden" data-i18n="back_review">← Back to checking boxes</button>
+        <button id="confirmBtn" class="primary wide hidden" data-i18n="confirm">Confirm mapping</button>
+      </div>
+    </aside>
+  </section>
+
+  <!-- done -->
+  <section id="done" class="panel center hidden">
+    <h1 data-i18n="h_done">Mapping confirmed</h1>
+    <p class="lead" data-i18n="p_done">Print the installation guide, fix the stickers, then do the final check together with the user.</p>
+    <div id="capSummary" class="capSummary"></div>
+    <div class="photoRow">
+      <a id="guideEn" class="bigbtn" target="_blank">📄 Guide (English)</a>
+      <a id="guideHi" class="bigbtn" target="_blank">📄 गाइड (हिंदी)</a>
+    </div>
+    <div class="photoRow small">
+      <a id="expJson" class="ghost">Export JSON</a><a id="expCsv" class="ghost">Export CSV</a>
+      <button id="againBtn" class="ghost" data-i18n="again">Set up another board</button>
+    </div>
+    <pre id="studyOut" class="studyOut hidden"></pre>
+  </section>
+</main>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>

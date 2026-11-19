@@ -1,0 +1,174 @@
+{
+  "SIMULATED": true,
+  "study_A": {
+    "VI_blind": [
+      {
+        "measure": "median identification time (s)",
+        "n": 12,
+        "median_A": 7.51082727382596,
+        "median_B": 4.270453047592376,
+        "mean_A": 7.737408080502789,
+        "mean_B": 4.6340227065221,
+        "sd_A": 1.0153772482995786,
+        "sd_B": 1.204810416619618,
+        "median_diff": -3.3190115535787594,
+        "median_diff_CI95": [
+          -4.4363068152176774,
+          -2.247781382915639
+        ],
+        "wilcoxon_W": 1.0,
+        "wilcoxon_p": 0.0028734139278525227,
+        "effect_r": 0.8605305459498929,
+        "paired_t": 6.076013902786288,
+        "paired_t_p": 8.0061891015933e-05,
+        "cohens_dz": -1.7539941311867857
+      },
+      {
+        "measure": "accuracy (proportion correct)",
+        "n": 12,
+        "median_A": 0.7,
+        "median_B": 1.0,
+        "mean_A": 0.6666666666666665,
+        "mean_B": 0.9416666666666668,
+        "sd_A": 0.11547005383792516,
+        "sd_B": 0.0996204919895622,
+        "median_diff": 0.30000000000000004,
+        "median_diff_CI95": [
+          0.2,
+          0.4
+        ],
+        "wilcoxon_W": 1.0,
+        "wilcoxon_p": 0.004169651569404451,
+        "effect_r": 0.8270639250619898,
+        "paired_t": -5.108624004141062,
+        "paired_t_p": 0.00033944325327624306,
+        "cohens_dz": 1.474732721989713
+      },
+      {
+        "measure": "confidence (1-7)",
+        "n": 12,
+        "median_A": 3.55,
+        "median_B": 5.7,
+        "mean_A": 3.483333333333334,
+        "mean_B": 5.750000000000001,
+        "sd_A": 0.5006056937411525,
+        "sd_B": 0.3801913393877541,
+        "median_diff": 2.1000000000000005,
+        "median_diff_CI95": [
+          1.85,
+          2.7
+        ],
+        "wilcoxon_W": 0.0,
+        "wilcoxon_p": 0.002217721464237049,
+        "effect_r": 0.8831760866327847,
+        "paired_t": -9.938060602737806,
+        "paired_t_p": 7.866268946722682e-07,
+        "cohens_dz": 2.8688709821067433
+      }
+    ]
+  },
+  "study_B": {
+    "n_paired": 22,
+    "over_reliance": {
+      "measure": "over-reliance (share of seeded errors missed): bare vs confidence",
+      "n": 22,
+      "median_A": 0.5,
+      "median_B": 0.0,
+      "mean_A": 0.5909090909090909,
+      "mean_B": 0.20454545454545456,
+      "sd_A": 0.4264014327112209,
+      "sd_B": 0.2951630263451236,
+      "median_diff": -0.5,
+      "median_diff_CI95": [
+        -0.5,
+        0.0
+      ],
+      "wilcoxon_W": 12.0,
+      "wilcoxon_p": 0.0025334475170878516,
+      "effect_r": 0.6437206858203839,
+      "paired_t": 3.9297262107687674,
+      "paired_t_p": 0.0007684358561752851,
+      "cohens_dz": -0.8378204432173196
+    },
+    "under_reliance": {
+      "measure": "under-reliance (share of correct AI boxes rejected): bare vs confidence",
+      "n": 22,
+      "median_A": 0.0,
+      "median_B": 0.0,
+      "mean_A": 0.03246753246753245,
+      "mean_B": 0.05844155844155841,
+      "sd_A": 0.06127600388984119,
+      "sd_B": 0.08433229324146385,
+      "median_diff": 0.0,
+      "median_diff_CI95": [
+        0.0,
+        0.0714285714285714
+      ],
+      "wilcoxon_W": 22.0,
+      "wilcoxon_p": 0.28504940740261275,
+      "effect_r": 0.22792115291927587,
+      "paired_t": -1.0726998329014736,
+      "paired_t_p": 0.29557871456698376,
+      "cohens_dz": 0.2287003728091378
+    },
+    "residual_errors": {
+      "measure": "wrong labels left after review: bare vs confidence",
+      "n": 22,
+      "median_A": 1.0,
+      "median_B": 0.0,
+      "mean_A": 1.1818181818181819,
+      "mean_B": 0.4090909090909091,
+      "sd_A": 0.8528028654224418,
+      "sd_B": 0.5903260526902472,
+      "median_diff": -1.0,
+      "median_diff_CI95": [
+        -1.0,
+        0.0
+      ],
+      "wilcoxon_W": 12.0,
+      "wilcoxon_p": 0.0025334475170878516,
+      "effect_r": 0.6437206858203839,
+      "paired_t": 3.9297262107687674,
+      "paired_t_p": 0.0007684358561752851,
+      "cohens_dz": -0.8378204432173196
+    },
+    "time": {
+      "measure": "onboarding time (s): bare vs confidence",
+      "n": 22,
+      "median_A": 141.3122691768893,
+      "median_B": 173.01559551739138,
+      "mean_A": 138.98373672278765,
+      "mean_B": 173.88733095349727,
+      "sd_A": 29.377851705273784,
+      "sd_B": 27.22027583741198,
+      "median_diff": 35.57384893803451,
+      "median_diff_CI95": [
+        11.92837014471425,
+        60.07415392628293
+      ],
+      "wilcoxon_W": 22.0,
+      "wilcoxon_p": 0.0006921738104795526,
+      "effect_r": 0.7233176382455371,
+      "paired_t": -4.351515670272142,
+      "paired_t_p": 0.00028034481088810224,
+      "cohens_dz": 0.9277462581346849
+    },
+    "manual_baseline": {
+      "n": 10,
+      "median_time_s": 385.71528835459037,
+      "mean_errors": 1.5
+    }
+  },
+  "pilot_P1": {
+    "per_symbol_recall": {
+      "big_bump": 0.9375,
+      "bump1": 0.8125,
+      "bump2": 0.96875,
+      "bump3": 0.84375,
+      "bump4_square": 0.8125,
+      "ridge_pair": 0.90625,
+      "texture": 0.9375
+    },
+    "overall_accuracy": 0.8883928571428571
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "glare": {
+    "tp": 114,
+    "fp": 4,
+    "fn": 28,
+    "precision": 0.9661,
+    "recall": 0.8028,
+    "f1": 0.8769,
+    "AP50": 0.819,
+    "images": 30,
+    "gt_switches": 142,
+    "plate_found_rate": 1.0,
+    "images_fully_correct": 0.367,
+    "mean_latency_s": 0.146
+  },
+  "ALL": {
+    "tp": 274,
+    "fp": 12,
+    "fn": 109,
+    "precision": 0.958,
+    "recall": 0.7154,
+    "f1": 0.8191,
+    "AP50": 0.7189,
+    "images": 90,
+    "gt_switches": 383,
+    "plate_found_rate": 0.756,
+    "images_fully_correct": 0.567,
+    "mean_latency_s": 0.235
+  },
+  "combined": {
+    "tp": 117,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "AP50": 1.0,
+    "images": 30,
+    "gt_switches": 117,
+    "plate_found_rate": 1.0,
+    "images_fully_correct": 1.0,
+    "mean_latency_s": 0.256
+  },
+  "far_small": {
+    "tp": 43,
+    "fp": 8,
+    "fn": 81,
+    "precision": 0.8431,
+    "recall": 0.3468,
+    "f1": 0.4914,
+    "AP50": 0.3356,
+    "images": 30,
+    "gt_switches": 124,
+    "plate_found_rate": 0.267,
+    "images_fully_correct": 0.333,
+    "mean_latency_s": 0.304
+  }
+}

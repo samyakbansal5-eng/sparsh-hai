@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SPARSH (स्पर्श) – AI-Assisted Tactile Labelling of Switchboards</title>
+<meta name="description" content="BITS F364 Human-AI Interaction project: an AI helps caregivers label switchboards with tactile stickers, and we test whether showing the AI's confidence helps them catch its mistakes.">
+<meta property="og:title" content="SPARSH – any switchboard, readable by touch">
+<meta property="og:description" content="AI-assisted tactile labelling of switchboards for visually impaired and elderly users. BITS F364 Human-AI Interaction.">
+<meta property="og:image" content="assets/teaser_poster.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='14' fill='%231f2a44'/%3E%3Ccircle cx='22' cy='32' r='8' fill='%23f4b942'/%3E%3Ccircle cx='42' cy='32' r='8' fill='%23f4b942'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1f2a44;--ink2:#4a5572;--muted:#6b7590;--paper:#f7f4ee;--card:#fffdf9;--line:#e5dfd3;--acc:#f4b942;--acc2:#d98a00;--green:#1e8a5a;--red:#b54646;--max:1120px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 Inter,"Noto Sans Devanagari",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}img,video{max-width:100%;display:block}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+nav{position:sticky;top:0;z-index:10;background:rgba(247,244,238,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:20px;height:60px}
+.brand{font-weight:800;letter-spacing:.06em;text-decoration:none;display:flex;align-items:center;gap:10px}
+.brand .hi{color:var(--acc2);font-weight:700;letter-spacing:0}
+nav .links{margin-left:auto;display:flex;gap:18px;font-size:15px}
+nav .links a{text-decoration:none;color:var(--ink2)}nav .links a:hover{color:var(--ink)}
+header.hero{background:var(--ink);color:#fff;padding:88px 0 72px}
+.hero .tag{display:inline-block;background:var(--acc);color:var(--ink);font-weight:700;font-size:13px;letter-spacing:.06em;border-radius:999px;padding:4px 12px}
+.hero h1{font-size:clamp(40px,6vw,76px);line-height:1.02;margin:18px 0 10px;letter-spacing:-.02em}
+.hero h1 span{color:var(--acc)}
+.hero p.lead{font-size:clamp(18px,2vw,22px);color:#d5dbea;max-width:760px;margin:0 0 30px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:10px;padding:12px 18px;font-weight:600;text-decoration:none;font-size:16px;border:2px solid transparent}
+.btn.primary{background:var(--acc);color:var(--ink)}.btn.ghost{border-color:#4a5677;color:#fff}.btn.ghost:hover{border-color:#8f99b5}
+.btn.dark{background:var(--ink);color:#fff}.btn.line{border-color:var(--line);background:var(--card)}
+section{padding:72px 0;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.1em;color:var(--acc2);text-transform:uppercase}
+h2{font-size:clamp(28px,3.4vw,40px);line-height:1.15;margin:8px 0 14px;letter-spacing:-.01em}
+h3{font-size:20px;margin:0 0 6px}
+p{margin:0 0 14px;color:var(--ink2)}
+.grid{display:grid;gap:20px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:860px){.g2,.g3,.g4{grid-template-columns:1fr 1fr}nav .links{display:none}}
+@media(max-width:560px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+.stat{font-size:40px;font-weight:800;line-height:1;color:var(--ink)}
+.stat+p{margin-top:8px;font-size:15px}
+.step{display:flex;gap:14px}.num{flex:none;width:34px;height:34px;border-radius:50%;background:var(--acc);font-weight:800;display:flex;align-items:center;justify-content:center}
+.sticker{text-align:center}.sticker img{width:100%;max-width:200px;margin:0 auto}
+.sticker b{display:block;font-size:20px;margin-top:6px}.sticker span{color:var(--muted);font-size:15px}
+figure{margin:0}figure img,figure video{border-radius:12px;border:1px solid var(--line);background:#fff}
+figcaption{font-size:14px;color:var(--muted);margin-top:8px}
+.callout{background:#fff6df;border:1px solid #f1dfae;border-radius:14px;padding:20px 22px}
+.callout p{color:var(--ink)}
+table{width:100%;border-collapse:collapse;font-size:15px;background:var(--card);border-radius:12px;overflow:hidden}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#efeae0;font-weight:700}
+.dl{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.dl small{color:var(--muted)}
+footer{padding:40px 0 60px;color:var(--muted);font-size:14px}
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;color:#fff}
+.pill.g{background:var(--green)}.pill.a{background:var(--acc2)}.pill.s{background:#4a5572}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="#top">SPARSH <span class="hi">स्पर्श</span></a>
+  <div class="links"><a href="#problem">Problem</a><a href="#how">How it works</a><a href="#code">Sticker code</a><a href="#study">Study</a><a href="#videos">Videos</a><a href="#downloads">Downloads</a></div>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap">
+  <span class="tag">BITS F364 · HUMAN-AI INTERACTION</span>
+  <h1>Any switchboard,<br><span>readable by touch.</span></h1>
+  <p class="lead">An AI helps a caregiver label a switchboard with tactile stickers in a few minutes. We test whether showing the AI's confidence helps people catch its mistakes before they become wrong labels on the wall.</p>
+  <div class="btns">
+    <a class="btn primary" id="appLink" href="#" target="_blank" rel="noopener">▶ Try the live app</a>
+    <a class="btn ghost" href="#videos">Watch the demo</a>
+    <a class="btn ghost" id="repoLink" href="#" target="_blank" rel="noopener">Source code</a>
+  </div>
+</div></header>
+
+<section id="problem"><div class="wrap">
+  <div class="eyebrow">The problem</div>
+  <h2>Every switch feels the same.</h2>
+  <p style="max-width:780px">Indian modular switchboards are rows of identical rockers. In a hostel guest room, a PG or a relative's home, a blind or low-vision person cannot tell the fan from the light without help or trial and error. Smart switches need an app, braille needs literacy most late-blind adults don't have, and plain bump dots mark a spot but carry no meaning.</p>
+  <div class="grid g3" style="margin-top:26px">
+    <div class="card"><div class="stat">≈ 4.8 M</div><p>blind people in India (national survey, Vashist et al. 2022)</p></div>
+    <div class="card"><div class="stat">16 / 16</div><p>blind participants already used tactile markers at home (Turkstra et al. 2025)</p></div>
+    <div class="card"><div class="stat">0</div><p>requirements in India's 2021 accessibility guidelines that a switch's <i>function</i> be identifiable by touch</p></div>
+  </div>
+</div></section>
+
+<section id="how"><div class="wrap">
+  <div class="eyebrow">How it works</div>
+  <h2>The AI sees <u>where</u>. People decide <u>what</u>.</h2>
+  <p style="max-width:780px">A photo can show where the switches are, but never what they control: that's hidden in the wiring. So the AI does the visible part and says when it is unsure, and the human does the rest.</p>
+  <div class="grid g2" style="margin-top:26px;align-items:start">
+    <div class="grid" style="gap:18px">
+      <div class="step"><div class="num">1</div><div><h3>One photo</h3><p>A caregiver photographs the board on a phone or laptop. Nothing leaves the device's local network.</p></div></div>
+      <div class="step"><div class="num">2</div><div><h3>AI finds the switches</h3><p>A two-stage detector straightens the plate, finds and numbers S1…Sn, and labels each box <span class="pill g">fairly sure</span> <span class="pill a">unsure</span> or <i>guess</i>, with a reason.</p></div></div>
+      <div class="step"><div class="num">3</div><div><h3>Human checks and decides</h3><p>Unsure boxes must be opened one by one. The caregiver fixes boxes, flips each switch, chooses what it controls, and ticks "I flipped it and checked".</p></div></div>
+      <div class="step"><div class="num">4</div><div><h3>Stickers + guide</h3><p>A printable English / हिंदी guide says which sticker goes on which switch. After that: no phone, no internet, no power. Just touch.</p></div></div>
+    </div>
+    <figure><img src="assets/07_assign_mid.png" alt="The SPARSH app: switches detected and numbered, with the sticker code shown on each assigned switch" loading="lazy"><figcaption>The working app: assigned switches show their sticker code on the photo.</figcaption></figure>
+  </div>
+</div></section>
+
+<section id="code"><div class="wrap">
+  <div class="eyebrow">The tactile code</div>
+  <h2>Four stickers you can buy, not print.</h2>
+  <p style="max-width:780px">Everything is off the shelf: clear bump stickers and a hook-and-loop square. We avoid a bar because ISO 24503 gives a tactile bar the meaning "stop". The code is refined from users' touch errors: any sticker below 90% recognition in our pilot is swapped by <code>refine_vocabulary.py</code>.</p>
+  <div class="grid g4" style="margin-top:26px">
+    <div class="sticker card"><img src="assets/stk_light.png" alt="One bump"><b>Light</b><span>one bump</span></div>
+    <div class="sticker card"><img src="assets/stk_fan.png" alt="Two bumps"><b>Fan</b><span>two bumps</span></div>
+    <div class="sticker card"><img src="assets/stk_socket.png" alt="Three bumps in a triangle"><b>Socket</b><span>three bumps</span></div>
+    <div class="sticker card"><img src="assets/stk_other.png" alt="Rough square"><b>Other</b><span>rough square</span></div>
+  </div>
+  <p style="margin-top:18px;font-size:15px">Learn four markers once and they mean the same thing on every SPARSH-labelled board. A plain switch means "unused or unknown".</p>
+</div></section>
+
+<section id="study"><div class="wrap">
+  <div class="eyebrow">The human-AI question</div>
+  <h2>Does showing the AI's confidence help people catch its mistakes?</h2>
+  <p style="max-width:820px">A wrong label is invisible to a blind user, so the installer must catch the AI's errors. In Study B, installers review board photos twice: once with <b>bare AI suggestions</b>, once with <b>confidence, reasons and forced review</b>. In both, about a quarter of the AI's boxes are deliberately wrong, following the course's trust-calibration brief.</p>
+  <div class="grid g2" style="margin-top:26px">
+    <figure><img src="assets/studyB_ai.png" alt="AI with confidence: the planted box S6 is marked unsure" loading="lazy"><figcaption><b>A · AI + confidence.</b> The planted box S6 is marked "unsure" and must be checked individually.</figcaption></figure>
+    <figure><img src="assets/studyB_ai_bare.png" alt="Bare AI: every box looks the same" loading="lazy"><figcaption><b>B · Bare AI.</b> Every box looks the same; "Keep all" keeps the planted one too.</figcaption></figure>
+  </div>
+  <h3 style="margin-top:36px">Four studies, each answering one question</h3>
+  <table style="margin-top:12px">
+    <tr><th>Study</th><th>Question</th><th>Who</th><th>Main measures</th></tr>
+    <tr><td><b>B (core)</b></td><td>Bare AI vs AI + confidence, 25% seeded errors</td><td>20–24 sighted installers</td><td>seeded errors missed, correct boxes rejected, time, trust</td></tr>
+    <tr><td>P1</td><td>Can people tell the stickers apart? → refined code v2</td><td>≥ 8 visually impaired adults</td><td>confusion matrix, recall ≥ 90%</td></tr>
+    <tr><td>A</td><td>Stickers vs plain board</td><td>5–8 blind / low-vision elderly</td><td>time to the right switch, accuracy, confidence</td></tr>
+    <tr><td>C</td><td>Does the code transfer to a board never touched?</td><td>Study A participants</td><td>accuracy vs 25% chance</td></tr>
+  </table>
+  <div class="callout" style="margin-top:22px"><p style="margin:0"><b>Results are not in yet.</b> The user studies run after ethics approval; this page will be updated with real numbers only. The detector figures below come from a synthetic benchmark.</p></div>
+</div></section>
+
+<section id="tech"><div class="wrap">
+  <div class="eyebrow">Technical evaluation</div>
+  <h2>Strong on clean photos, honest about glare.</h2>
+  <div class="grid g2" style="margin-top:20px;align-items:center">
+    <figure><img src="assets/detector_f1_by_condition.png" alt="Detector F1 by photo condition" loading="lazy"><figcaption>F1 by photo condition, heuristic vs learned verifier (synthetic benchmark).</figcaption></figure>
+    <div class="grid g2">
+      <div class="card"><div class="stat">0.995</div><p>F1 on 240 synthetic test boards</p></div>
+      <div class="card"><div class="stat">0.909</div><p>F1 on 90 photos with unseen stress conditions</p></div>
+      <div class="card"><div class="stat">0.2 s</div><p>per photo on a laptop CPU</p></div>
+      <div class="card"><div class="stat">12 / 12</div><p>automated tests (human-in-the-loop rules, seeded errors, pipeline)</p></div>
+    </div>
+  </div>
+  <p style="margin-top:16px">Glare and far-away photos are where it fails, which is exactly why the interface forces a human check on uncertain boxes.</p>
+</div></section>
+
+<section id="videos"><div class="wrap">
+  <div class="eyebrow">Videos</div>
+  <h2>See it working.</h2>
+  <div class="grid g2" style="margin-top:20px">
+    <figure><video controls preload="none" poster="assets/teaser_poster.jpg"><source src="assets/teaser.mp4" type="video/mp4"></video><figcaption>Teaser · 2:30 · the problem and the idea</figcaption></figure>
+    <figure><video controls preload="none" poster="assets/demo_poster.jpg"><source src="assets/demo.mp4" type="video/mp4"></video><figcaption>Demo · 2:24 · a real recording of the running app</figcaption></figure>
+  </div>
+</div></section>
+
+<section id="downloads"><div class="wrap">
+  <div class="eyebrow">Downloads</div>
+  <h2>Report, poster and slides.</h2>
+  <div class="grid g3" style="margin-top:20px">
+    <a class="card dl" href="assets/SPARSH_final_report.pdf" target="_blank" rel="noopener" style="text-decoration:none"><div><h3>Final report</h3><small>PDF · 40 pages</small></div><span>↓</span></a>
+    <a class="card dl" href="assets/SPARSH_poster_A1.pdf" target="_blank" rel="noopener" style="text-decoration:none"><div><h3>Scientific poster</h3><small>PDF · A1</small></div><span>↓</span></a>
+    <a class="card dl" href="assets/SPARSH_presentation.pdf" target="_blank" rel="noopener" style="text-decoration:none"><div><h3>Presentation</h3><small>PDF · 19 slides</small></div><span>↓</span></a>
+  </div>
+  <div class="btns" style="margin-top:26px">
+    <a class="btn dark" id="appLink2" href="#" target="_blank" rel="noopener">▶ Try the live app</a>
+    <a class="btn line" id="repoLink2" href="#" target="_blank" rel="noopener">Source code on GitHub</a>
+  </div>
+  <p style="font-size:14px;margin-top:12px">The live app runs on a free server that sleeps when idle: the first load can take up to a minute.</p>
+</div></section>
+
+<footer><div class="wrap">
+  Team SPARSH · Deepansh Saha · [Member 2] · [Member 3] · [Member 4] · BITS Pilani, Pilani Campus · BITS F364 Human-AI Interaction
+</div></footer>
+
+<script>
+// Set these two after deploying (see README).
+const APP_URL = "https://sparsh-bits-hai.onrender.com";
+const REPO_URL = "https://github.com/samyakbansal5-eng/sparsh-hai";
+for (const id of ["appLink", "appLink2"]) document.getElementById(id).href = APP_URL;
+for (const id of ["repoLink", "repoLink2"]) document.getElementById(id).href = REPO_URL;
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+# Render Blueprint: the working SPARSH app (Flask + OpenCV). The website itself is on Vercel.
+services:
+  - type: web
+    name: sparsh-bits-hai
+    runtime: python
+    plan: free
+    rootDir: code
+    buildCommand: pip install -r requirements-render.txt
+    startCommand: gunicorn --chdir app --workers 1 --threads 4 --timeout 120 --bind 0.0.0.0:$PORT server:app
+    healthCheckPath: /api/samples
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.13.0"

@@ -1,0 +1,63 @@
+{
+  "train_candidates": 6457,
+  "train_pos": 3429,
+  "val_candidates": 2241,
+  "val_pos": 1208,
+  "C_search": [
+    {
+      "C": 0.001,
+      "val_AP": 0.9982,
+      "val_AUC": 0.9977
+    },
+    {
+      "C": 0.003,
+      "val_AP": 0.9986,
+      "val_AUC": 0.9982
+    },
+    {
+      "C": 0.01,
+      "val_AP": 0.9989,
+      "val_AUC": 0.9986
+    },
+    {
+      "C": 0.03,
+      "val_AP": 0.9991,
+      "val_AUC": 0.9988
+    },
+    {
+      "C": 0.1,
+      "val_AP": 0.999,
+      "val_AUC": 0.9987
+    },
+    {
+      "C": 0.3,
+      "val_AP": 0.9989,
+      "val_AUC": 0.9986
+    }
+  ],
+  "chosen_C": 0.03,
+  "feature_means_pos": {
+    "aspect": 1.6030000448226929,
+    "aspect_dev": 0.07699999958276749,
+    "border_edge": 147.66099548339844,
+    "inner_edge": 49.395999908447266,
+    "half_contrast": 0.8190000057220459,
+    "mid_edge": 29.566999435424805,
+    "texture": 31.981000900268555,
+    "rel_size": 0.03500000014901161,
+    "border_inner_ratio": 3.874000072479248,
+    "rel_brightness": 0.9649999737739563
+  },
+  "feature_means_neg": {
+    "aspect": 1.5199999809265137,
+    "aspect_dev": 0.20399999618530273,
+    "border_edge": 47.18000030517578,
+    "inner_edge": 35.9010009765625,
+    "half_contrast": 0.3240000009536743,
+    "mid_edge": 16.729999542236328,
+    "texture": 15.206000328063965,
+    "rel_size": 0.026000000536441803,
+    "border_inner_ratio": 1.5789999961853027,
+    "rel_brightness": 0.9800000190734863
+  }
+}

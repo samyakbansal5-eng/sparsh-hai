@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<style>
+:root{--ink:#1f2a44;--ink2:#4a5572;--paper:#f7f4ee;--acc:#f4b942;--card:#fffdf9;--line:#e2dccf;--green:#1e8a5a;--amber:#d98a00;--red:#b54646}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:var(--paper);font-family:Inter,"Noto Sans Devanagari",sans-serif;color:var(--ink)}
+.scene{position:absolute;inset:0;opacity:0}
+.dark{background:var(--ink);color:#fff}
+.abs{position:absolute}
+.h1{font-size:92px;font-weight:800;letter-spacing:-.02em;line-height:1.05}
+.h2{font-size:64px;font-weight:700;letter-spacing:-.015em;line-height:1.12}
+.h3{font-size:40px;font-weight:600;line-height:1.25}
+.body{font-size:30px;color:var(--ink2);line-height:1.4}
+.src{font-size:20px;color:#8a8f9e}
+.plate{position:absolute;background:#f3f2ee;border:3px solid #c9c4b8;border-radius:22px;box-shadow:0 30px 60px rgba(31,42,68,.18)}
+.sw{position:absolute;width:118px;height:190px;background:#fbfbf9;border:3px solid #b9b4a8;border-radius:10px;box-shadow:inset 0 -95px 0 #ecebe6}
+.sw .mk{position:absolute;left:50%;top:24px;width:26px;height:6px;margin-left:-13px;background:#c0392b;border-radius:3px}
+.sym{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
+.finger{position:absolute;width:70px;height:70px;border-radius:50%;background:rgba(244,185,66,.55);border:5px solid var(--ink)}
+.q{position:absolute;font-size:64px;font-weight:800;color:var(--red)}
+.card{position:absolute;background:var(--card);border:2px solid var(--line);border-radius:26px;box-shadow:0 20px 50px rgba(31,42,68,.10);padding:44px}
+.big{font-size:96px;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.shot{position:absolute;border-radius:18px;box-shadow:0 30px 70px rgba(31,42,68,.25);border:2px solid var(--line)}
+.pill{display:inline-block;padding:10px 22px;border-radius:999px;background:var(--ink);color:#fff;font-size:26px;font-weight:600}
+.bar{position:absolute;bottom:0;height:22px;background:var(--acc);border-radius:6px 6px 0 0}
+.tile{position:absolute;width:400px;height:250px;background:var(--card);border:2px solid var(--line);border-radius:24px;padding:34px}
+.tile .n{font-size:22px;font-weight:700;color:var(--acc);letter-spacing:.1em}
+.tile .t{font-size:32px;font-weight:700;margin-top:10px;line-height:1.2}
+.tile .d{font-size:22px;color:var(--ink2);margin-top:10px;line-height:1.35}
+</style></head><body>
+
+<!-- S1 title -->
+<section class="scene dark" id="s1">
+  <svg class="abs" id="s1mark" style="left:810px;top:220px" width="300" height="300" viewBox="0 0 64 64">
+    <rect x="4" y="4" width="56" height="56" rx="14" fill="#2a3757" stroke="#f4b942" stroke-width="1.2"/>
+    <circle id="m1" cx="20" cy="22" r="6" fill="#f4b942"/>
+    <g id="m2"><rect x="35" y="19" width="12" height="4" fill="#f4b942"/><rect x="39" y="15" width="4" height="12" fill="#f4b942"/></g>
+    <polygon id="m3" points="20,35 27,47 13,47" fill="#f4b942"/>
+    <rect id="m4" x="35" y="36" width="11" height="11" rx="1.5" fill="#f4b942"/>
+  </svg>
+  <div class="abs h1" id="s1t" style="left:0;right:0;top:560px;text-align:center;font-size:150px;letter-spacing:.12em">SPARSH</div>
+  <div class="abs" id="s1hi" style="left:0;right:0;top:740px;text-align:center;font-size:64px;color:#f4b942;font-weight:600">स्पर्श · touch</div>
+  <div class="abs body" id="s1s" style="left:0;right:0;top:850px;text-align:center;color:#c9d0e2;font-size:36px">Any switchboard, readable by touch.</div>
+  <div class="abs src" id="s1c" style="left:0;right:0;top:990px;text-align:center;color:#8f99b5;font-size:24px">BITS F364 · Human-AI Interaction · BITS Pilani</div>
+</section>
+
+<!-- S2 problem -->
+<section class="scene" id="s2">
+  <div class="abs h2" id="s2a" style="left:160px;top:110px">Walk into a room you've never been in.</div>
+  <div class="abs h2" id="s2b" style="left:160px;top:200px;color:var(--amber)">Find the fan. With your eyes closed.</div>
+  <div class="plate" id="s2plate" style="left:300px;top:420px;width:1320px;height:330px"></div>
+  <div id="s2sw"></div>
+  <div class="finger" id="s2f"></div>
+  <div class="abs h3" id="s2c" style="left:0;right:0;top:850px;text-align:center">Every switch feels the same. So people guess, or ask for help.</div>
+</section>
+
+<!-- S3 stats -->
+<section class="scene" id="s3">
+  <div class="abs h2" id="s3h" style="left:160px;top:110px">Why this matters</div>
+  <div class="card" id="s3a" style="left:160px;top:290px;width:500px;height:480px"><div class="big">≈ 4.8 M</div><div class="h3" style="margin-top:18px">blind people in India</div><div class="src" style="margin-top:110px">Vashist et al., PLOS ONE 2022 (national survey, extrapolated)</div></div>
+  <div class="card" id="s3b" style="left:710px;top:290px;width:500px;height:480px"><div class="big">Late</div><div class="h3" style="margin-top:18px">most lose sight later in life, so braille can't be assumed</div><div class="src" style="margin-top:36px">cataract ≈ 2/3 of blindness; blindness linked to age and illiteracy (same survey)</div></div>
+  <div class="card" id="s3c" style="left:1260px;top:290px;width:500px;height:480px"><div class="big">• • •</div><div class="h3" style="margin-top:18px">bump dots mark a spot, but they don't <i>mean</i> anything</div><div class="src" style="margin-top:36px">all 16 blind participants used tactile markers (Turkstra et al., Sci. Rep. 2025)</div></div>
+  <div class="abs body" id="s3d" style="left:160px;top:850px">India's accessibility guidelines set switch height and contrast; we found nothing on telling what a switch does.</div>
+</section>
+
+<!-- S4 vocabulary -->
+<section class="scene" id="s4">
+  <div class="abs h2" id="s4h" style="left:160px;top:90px">Four stickers you can buy.<br><span style="color:var(--amber)">One code for every board.</span></div>
+  <div id="s4caps"></div>
+  <div class="abs src" id="s4n" style="left:160px;top:990px">Off-the-shelf bump stickers + hook-and-loop squares · no bar (ISO 24503: bar = stop) · refined from users' touch errors in pilot P1</div>
+</section>
+
+<!-- S5 photo + AI -->
+<section class="scene" id="s5">
+  <div class="abs h2" id="s5h" style="left:120px;top:90px;width:680px">The hard part: <span style="color:var(--amber)">which switch runs what?</span></div>
+  <div class="abs body" id="s5b" style="left:120px;top:330px;width:640px">That's hidden in the wiring. No photo can show it.</div>
+  <div class="abs body" id="s5c" style="left:120px;top:470px;width:640px">So a helper takes <b>one photo</b>. The AI finds and numbers the switches…</div>
+  <div class="abs body" id="s5d" style="left:120px;top:640px;width:640px">…and says honestly when it is <b style="color:var(--amber)">unsure</b>, and <i>why</i>.</div>
+  <img class="shot" id="s5i1" src="screens/02_ai_result.png" style="left:840px;top:200px;width:980px">
+  <img class="shot" id="s5i2" src="screens/03_low_conf_card.png" style="left:840px;top:200px;width:980px">
+</section>
+
+<!-- S6 human decides -->
+<section class="scene" id="s6">
+  <img class="shot" id="s6i1" src="screens/07_assign_mid.png" style="left:100px;top:180px;width:1000px">
+  <img class="shot" id="s6i2" src="screens/10_guide_en.png" style="left:900px;top:240px;width:900px">
+  <div class="abs h2" id="s6h" style="left:100px;top:60px">AI finds <u>where</u>. People decide <u style="color:var(--amber)">what</u>.</div>
+  <div class="abs body" id="s6b" style="left:100px;top:880px;width:1700px">The helper flips each switch, chooses what it controls, ticks "I checked", and prints a sticker guide in English or हिंदी.</div>
+</section>
+
+<!-- S7 offline -->
+<section class="scene dark" id="s7">
+  <div class="plate" id="s7plate" style="left:300px;top:330px;width:1320px;height:330px;background:#f3f2ee"></div>
+  <div id="s7sw"></div>
+  <div class="finger" id="s7f" style="background:rgba(244,185,66,.7);border-color:#fff"></div>
+  <div class="abs h2" id="s7a" style="left:0;right:0;top:110px;text-align:center">No phone. No internet. No power.</div>
+  <div class="abs h1" id="s7b" style="left:0;right:0;top:780px;text-align:center;color:var(--acc)">Just touch.</div>
+</section>
+
+<!-- S8 evaluation + close -->
+<section class="scene" id="s8">
+  <div class="abs h2" id="s8h" style="left:160px;top:90px">What we're testing, with real users</div>
+  <div class="tile" id="s8a" style="left:160px;top:270px"><div class="n">PILOT P1</div><div class="t">Can people tell the stickers apart?</div><div class="d">confusion matrix → refined code</div></div>
+  <div class="tile" id="s8b" style="left:590px;top:270px"><div class="n">STUDY A</div><div class="t">Faster, more accurate than a plain board?</div><div class="d">time · accuracy · confidence</div></div>
+  <div class="tile" id="s8c" style="left:1020px;top:270px"><div class="n">STUDY B</div><div class="t">Bare AI vs AI showing confidence</div><div class="d">do helpers catch seeded AI errors?</div></div>
+  <div class="tile" id="s8d" style="left:1450px;top:270px;width:310px"><div class="n">STUDY C</div><div class="t">New layouts?</div><div class="d">does the code transfer?</div></div>
+  <div class="abs" id="s8e" style="left:0;right:0;top:650px;text-align:center">
+    <div style="font-size:120px;font-weight:800;letter-spacing:.12em">SPARSH</div>
+    <div style="font-size:34px;color:var(--ink2);margin-top:6px">Team SPARSH · BITS Pilani · BITS F364 Human-AI Interaction</div>
+  </div>
+</section>
+
+<script>
+const D=[12,18,15,20,25,20,20,20]; const START=[]; {let a=0; for(const d of D){START.push(a);a+=d;}}
+const $=id=>document.getElementById(id);
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const ease=x=>{x=clamp(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
+const ramp=(t,a,d=0.8)=>ease((t-a)/d);
+function show(el,t,a,d=0.8,dy=40){const p=ramp(t,a,d);el.style.opacity=p;el.style.transform=`translateY(${(1-p)*dy}px)`;}
+function hide(el){el.style.opacity=0}
+// build switches
+function buildRow(container,plateLeft,plateTop,syms){
+  const n=syms.length, gap=40, w=118; const total=n*w+(n-1)*gap; const x0=plateLeft+(1320-total)/2;
+  let h='';
+  syms.forEach((s,i)=>{const x=x0+i*(w+gap); h+=`<div class="sw" id="${container}_${i}" style="left:${x}px;top:${plateTop+70}px"><div class="mk"></div>${s?symSvg(s):''}</div>`});
+  $(container).innerHTML=h; return {x0,w,gap,top:plateTop+70};
+}
+function symSvg(s){const c='#1f2a44';let b='';
+ if(s==='dot')b='<circle cx="30" cy="30" r="17" fill="#f4b942" stroke="'+c+'" stroke-width="3"/>';
+ if(s==='cross')b='<path d="M24 8h12v16h16v12H36v16H24V36H8V24h16z" fill="#f4b942" stroke="'+c+'" stroke-width="3"/>';
+ if(s==='triangle')b='<polygon points="30,8 52,50 8,50" fill="#f4b942" stroke="'+c+'" stroke-width="3" stroke-linejoin="round"/>';
+ if(s==='square')b='<rect x="12" y="12" width="36" height="36" rx="4" fill="#f4b942" stroke="'+c+'" stroke-width="3"/>';
+ const bp=(x,y,r)=>'<circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="#f4b942" stroke="'+c+'" stroke-width="3"/>';
+ if(s==='bump1')b=bp(30,30,14);
+ if(s==='bump2')b=bp(17,30,10)+bp(43,30,10);
+ if(s==='bump3')b=bp(30,16,9)+bp(16,42,9)+bp(44,42,9);
+ if(s==='texture'){b='<rect x="10" y="10" width="40" height="40" rx="4" fill="#d9c08a" stroke="'+c+'" stroke-width="3"/>';for(let i=0;i<5;i++)for(let j=0;j<5;j++)b+='<path d="M'+(14+i*8)+' '+(18+j*8)+'l4 -4" stroke="'+c+'" stroke-width="2"/>';}
+ return `<svg class="sym" width="64" height="64" viewBox="0 0 60 60">${b}</svg>`;}
+const R2=buildRow('s2sw',300,420,[0,0,0,0,0,0,0,0]);
+const R7=buildRow('s7sw',300,330,['bump1','bump2','bump1','bump3','texture','bump1','bump2','bump1']);
+// S4 caps
+const caps=[['light','Light','one bump'],['fan','Fan','two bumps'],['socket','Socket','three bumps'],['other','Other','rough square']];
+$('s4caps').innerHTML=caps.map((c,i)=>`<div class="abs" id="s4c${i}" style="left:${160+i*410}px;top:360px;width:380px;text-align:center">
+ <img src="assets/stk_${c[0]}.png" style="width:330px;height:330px;object-fit:contain">
+ <div class="h3" style="margin-top:6px">${c[1]}</div><div class="body" style="font-size:26px">${c[2]}</div>
+ </div>`).join('');
+
+const scenes=[
+ (t)=>{ // S1
+  const m=['m1','m2','m3','m4']; m.forEach((id,i)=>{const p=ramp(t,0.4+i*0.35,0.6);$(id).style.opacity=p;});
+  const sc=0.85+0.15*ease(t/2); $('s1mark').style.transform=`scale(${sc})`; $('s1mark').style.opacity=ramp(t,0,0.6);
+  show($('s1t'),t,2.0,1.0); show($('s1hi'),t,3.2); show($('s1s'),t,4.5); show($('s1c'),t,6.0);
+ },
+ (t)=>{ // S2
+  show($('s2a'),t,0.3); show($('s2b'),t,3.0); show($('s2plate'),t,0.8,0.8,20);
+  for(let i=0;i<8;i++){const e=$('s2sw_'+i); e.style.opacity=ramp(t,1+i*0.12,0.5);}
+  // finger sweeps across switches 5-15s, question marks
+  const f=$('s2f'); const p=clamp((t-5)/9); const idx=p*7; const x=R2.x0+idx*(R2.w+R2.gap)+R2.w/2-35; f.style.left=x+'px'; f.style.top=(R2.top+120+Math.sin(t*6)*6)+'px'; f.style.opacity=ramp(t,4.5,0.5);
+  document.querySelectorAll('.q2').forEach(q=>q.remove());
+  for(let i=0;i<8;i++){ if(t>5+i*9/7){const q=document.createElement('div');q.className='q q2';q.textContent='?';q.style.left=(R2.x0+i*(R2.w+R2.gap)+40)+'px';q.style.top=(R2.top-90)+'px';q.style.opacity=clamp((t-5-i*9/7)/0.5);$('s2').appendChild(q);} }
+  show($('s2c'),t,13.5);
+ },
+ (t)=>{ show($('s3h'),t,0.2); show($('s3a'),t,1.0); show($('s3b'),t,4.5); show($('s3c'),t,8.0); show($('s3d'),t,11.0); },
+ (t)=>{ show($('s4h'),t,0.2); for(let i=0;i<4;i++) show($('s4c'+i),t,2+i*2.6,0.9,60); show($('s4n'),t,13.5); },
+ (t)=>{ show($('s5h'),t,0.2); show($('s5b'),t,3.0); show($('s5c'),t,7.0); show($('s5d'),t,14.0);
+  const i1=$('s5i1'),i2=$('s5i2'); const a=ramp(t,7.5,1.0); i1.style.opacity=a*(1-ramp(t,14.5,0.8)); i1.style.transform=`translateY(${(1-a)*60}px) scale(${1+0.03*clamp((t-7.5)/7)})`;
+  i2.style.opacity=ramp(t,14.5,0.8); i2.style.transform=`scale(${1+0.03*clamp((t-14.5)/10)})`; },
+ (t)=>{ show($('s6h'),t,0.2); const a=ramp(t,1.5,1); $('s6i1').style.opacity=a; $('s6i1').style.transform=`translateY(${(1-a)*60}px)`;
+  const b=ramp(t,9,1); $('s6i2').style.opacity=b; $('s6i2').style.transform=`translateX(${(1-b)*120}px)`; show($('s6b'),t,4.5); },
+ (t)=>{ show($('s7a'),t,0.3); show($('s7plate'),t,1,0.8,20); for(let i=0;i<8;i++){const e=$('s7sw_'+i); e.style.opacity=ramp(t,1.3+i*0.15,0.5);}
+  const f=$('s7f'); // finger travels to the second two-bump (fan) at idx 6
+  const p=ease(clamp((t-4)/5)); const idx=p*6; f.style.left=(R7.x0+idx*(R7.w+R7.gap)+R7.w/2-35)+'px'; f.style.top=(R7.top+60)+'px'; f.style.opacity=ramp(t,3.5,0.5);
+  const hit=$('s7sw_6'); hit.style.boxShadow=t>9.2?`0 0 0 ${8+4*Math.sin(t*5)}px rgba(244,185,66,.8)`:'none';
+  show($('s7b'),t,10.5,1.0); },
+ (t)=>{ show($('s8h'),t,0.2); ['s8a','s8b','s8c','s8d'].forEach((id,i)=>show($(id),t,1+i*1.4)); show($('s8e'),t,9,1.2); },
+];
+window.render=function(T){
+  let k=START.length-1; for(let i=0;i<START.length;i++){ if(T<START[i]+D[i]){k=i;break;} }
+  document.querySelectorAll('.scene').forEach(s=>s.style.opacity=0);
+  const t=T-START[k]; const el=document.querySelectorAll('.scene')[k];
+  const fin=clamp(t/0.5), fout=clamp((D[k]-t)/0.5); el.style.opacity=Math.min(fin, k===D.length-1?1:fout);
+  scenes[k](t);
+};
+window.TOTAL=D.reduce((a,b)=>a+b,0); window.START=START; window.D=D;
+render(0);
+</script>
+</body></html>

@@ -1,0 +1,66 @@
+{
+  "from_version": "sticker-v1 (pending pilot P1)",
+  "recall": {
+    "big_bump": 0.9375,
+    "bump1": 0.8125,
+    "bump2": 0.96875,
+    "bump3": 0.84375,
+    "bump4_square": 0.8125,
+    "ridge_pair": 0.90625,
+    "texture": 0.9375
+  },
+  "top_confusable_pairs": [
+    {
+      "pair": [
+        "big_bump",
+        "bump1"
+      ],
+      "two_way_confusion": 0.125
+    },
+    {
+      "pair": [
+        "bump4_square",
+        "ridge_pair"
+      ],
+      "two_way_confusion": 0.062
+    },
+    {
+      "pair": [
+        "bump3",
+        "bump4_square"
+      ],
+      "two_way_confusion": 0.062
+    },
+    {
+      "pair": [
+        "bump1",
+        "bump4_square"
+      ],
+      "two_way_confusion": 0.062
+    },
+    {
+      "pair": [
+        "bump1",
+        "bump3"
+      ],
+      "two_way_confusion": 0.062
+    }
+  ],
+  "current": {
+    "light": "bump1",
+    "fan": "bump2",
+    "socket": "bump3",
+    "other": "texture"
+  },
+  "proposed": {
+    "light": "ridge_pair",
+    "fan": "bump2",
+    "socket": "big_bump",
+    "other": "texture"
+  },
+  "changes": [
+    "light: 'bump1' failed (recall 0.81); replace with 'ridge_pair' (recall 0.91, max confusion with kept symbols 0.03)",
+    "socket: 'bump3' failed (recall 0.84); replace with 'big_bump' (recall 0.94, max confusion with kept symbols 0.06)"
+  ],
+  "SIMULATED": true
+}

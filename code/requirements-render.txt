@@ -1,0 +1,6 @@
+# Runtime-only dependencies for hosting the app (Render). Full research toolchain: requirements.txt
+flask>=3.0
+gunicorn>=22
+numpy>=2.0
+opencv-python-headless>=4.8
+scikit-learn==1.9.1

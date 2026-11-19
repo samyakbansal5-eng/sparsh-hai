@@ -1,0 +1,54 @@
+[
+  {
+    "split": "test",
+    "mode": "heuristic",
+    "precision": 0.9799,
+    "recall": 0.9578,
+    "f1": 0.9688,
+    "AP50": 0.9732,
+    "images_fully_correct": 0.871,
+    "plate_found_rate": 1.0,
+    "mean_latency_s": 0.19,
+    "images": 240,
+    "gt_switches": 1020
+  },
+  {
+    "split": "test",
+    "mode": "learned",
+    "precision": 0.9932,
+    "recall": 0.9961,
+    "f1": 0.9946,
+    "AP50": 0.99,
+    "images_fully_correct": 0.963,
+    "plate_found_rate": 1.0,
+    "mean_latency_s": 0.211,
+    "images": 240,
+    "gt_switches": 1020
+  },
+  {
+    "split": "stress",
+    "mode": "heuristic",
+    "precision": 0.9563,
+    "recall": 0.799,
+    "f1": 0.8706,
+    "AP50": 0.814,
+    "images_fully_correct": 0.622,
+    "plate_found_rate": 0.933,
+    "mean_latency_s": 0.202,
+    "images": 90,
+    "gt_switches": 383
+  },
+  {
+    "split": "stress",
+    "mode": "learned",
+    "precision": 0.9818,
+    "recall": 0.846,
+    "f1": 0.9088,
+    "AP50": 0.849,
+    "images_fully_correct": 0.711,
+    "plate_found_rate": 0.933,
+    "mean_latency_s": 0.22,
+    "images": 90,
+    "gt_switches": 383
+  }
+]

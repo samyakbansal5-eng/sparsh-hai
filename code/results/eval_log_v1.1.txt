@@ -1,0 +1,26 @@
+== test_heuristic ==
+ALL           P=0.980 R=0.958 F1=0.969 AP50=0.973 plate=1.00 perfect=0.87 n=1020 t=0.19s
+angled        P=0.934 R=0.923 F1=0.929 AP50=0.899 plate=1.00 perfect=0.80 n=170 t=0.162s
+blur          P=1.000 R=0.914 F1=0.955 AP50=0.989 plate=1.00 perfect=0.90 n=175 t=0.165s
+dark_plate    P=0.988 R=0.949 F1=0.968 AP50=0.969 plate=1.00 perfect=0.78 n=176 t=0.184s
+dim           P=0.994 R=0.983 F1=0.988 AP50=0.980 plate=1.00 perfect=0.93 n=173 t=0.296s
+normal        P=0.974 R=1.000 F1=0.987 AP50=1.000 plate=1.00 perfect=0.93 n=150 t=0.167s
+uneven_light  P=0.989 R=0.983 F1=0.986 AP50=0.998 plate=1.00 perfect=0.90 n=176 t=0.165s
+== stress_heuristic ==
+ALL           P=0.956 R=0.799 F1=0.871 AP50=0.814 plate=0.93 perfect=0.62 n=383 t=0.202s
+combined      P=0.930 R=0.914 F1=0.922 AP50=0.904 plate=1.00 perfect=0.77 n=117 t=0.248s
+far_small     P=0.943 R=0.669 F1=0.783 AP50=0.689 plate=0.80 perfect=0.63 n=124 t=0.207s
+glare         P=0.992 R=0.817 F1=0.896 AP50=0.839 plate=1.00 perfect=0.47 n=142 t=0.151s
+== test_learned ==
+ALL           P=0.993 R=0.996 F1=0.995 AP50=0.990 plate=1.00 perfect=0.96 n=1020 t=0.211s
+angled        P=0.983 R=0.988 F1=0.985 AP50=0.990 plate=1.00 perfect=0.90 n=170 t=0.185s
+blur          P=1.000 R=1.000 F1=1.000 AP50=1.000 plate=1.00 perfect=1.00 n=175 t=0.183s
+dark_plate    P=0.994 R=0.994 F1=0.994 AP50=0.990 plate=1.00 perfect=0.97 n=176 t=0.201s
+dim           P=0.989 R=1.000 F1=0.994 AP50=1.000 plate=1.00 perfect=0.95 n=173 t=0.333s
+normal        P=1.000 R=0.993 F1=0.997 AP50=1.000 plate=1.00 perfect=0.97 n=150 t=0.184s
+uneven_light  P=0.994 R=1.000 F1=0.997 AP50=1.000 plate=1.00 perfect=0.97 n=176 t=0.181s
+== stress_learned ==
+ALL           P=0.982 R=0.846 F1=0.909 AP50=0.849 plate=0.93 perfect=0.71 n=383 t=0.22s
+combined      P=1.000 R=1.000 F1=1.000 AP50=1.000 plate=1.00 perfect=1.00 n=117 t=0.275s
+far_small     P=0.979 R=0.750 F1=0.849 AP50=0.749 plate=0.80 perfect=0.77 n=124 t=0.223s
+glare         P=0.966 R=0.803 F1=0.877 AP50=0.819 plate=1.00 perfect=0.37 n=142 t=0.161s
