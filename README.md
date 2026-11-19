@@ -8,17 +8,17 @@ AI's confidence (vs bare suggestions, with ~25% seeded errors) helps installers 
 ## Repository layout
 | Path | What | Hosted on |
 |---|---|---|
-| `index.html`, `assets/` | Project website (videos, poster, slides, report) | **Vercel** (static, no build) |
+| `public/` | Project website (videos, poster, slides, report) | **Vercel** (static, no build) |
 | `code/` | Working Flask app + research code (detector, study analysis, refinement tool) | **Render** (`render.yaml`) |
 
 ## Deploy
-**Website (Vercel):** vercel.com → Add New → Project → import this repo → Framework preset *Other*, no build command, output = root → Deploy.
+**Website (Vercel):** vercel.com → Add New → Project → import this repo → settings come from `vercel.json` (static, output = `public/`) → Deploy.
 `.vercelignore` keeps `code/` out of the website.
 
 **App (Render):** render.com → New → Blueprint → select this repo → Apply. It reads `render.yaml`
 (free plan, one worker, because sessions live in memory). The free server sleeps when idle; the first request takes up to a minute.
 
-After both are live, set `APP_URL` and `REPO_URL` at the bottom of `index.html` and push; Vercel redeploys automatically.
+After both are live, set `APP_URL` and `REPO_URL` at the bottom of `public/index.html` and push; Vercel redeploys automatically.
 
 ## Run locally
 ```bash
